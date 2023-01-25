@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu_dinosaure</title>
+    <link rel="stylesheet" href="Dino.css">
+</head>
+<body>
+   
+    <div class="world" data-world>
+        <!--data world: c'est un attribut de données C'est cette classe qui va nous aider à appliquer du style responsive pour le jeu-->
+        <div class="score" data-score>0</div>
+        <div class="start-screen" data-start-screen>Press Any Key To Start</div>
+        <img src="./ASSETS/ground.png" alt="" class="ground" data-ground>
+        <img src="./ASSETS/ground.png" alt="" class="ground" data-ground>
+         <!--On déclare le  sol deux fois parce que dans le jeu on remarque que 
+        le sol avance au fur et à mesure que le dinosaure n'a pas encore touché le sol
+        le sol se repéte donc plusieurs fois qu'un sol est termine 
+        le principe derriére est d'assembler les deux sols de tels sortes que
+        à chaque fois qu'un obstacles posé au sol sort du bord de l'écran,le second sol 
+        prends la place du premier et ainsi de suite -->
+        <!--Mettre le dinosaure à l'intérieur de l'écran-->
+        <img src="./ASSETS/dino-stationary.png" alt="" class="dino" data-dino>
+
+    </div>
+   
+    <script src="Dino.js" type="module"></script>
+    <!--la valeur type module dérange mon navigateur il a fallu que je l'éxécute sur un serveur local: en me servant du Live - server -->
+</body>
+</html>

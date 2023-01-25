@@ -1,0 +1,219 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+   
+}
+.nom > span {
+     display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    position: relative;
+   
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #2f363e;
+    color: #fff;
+
+}
+.tempsDarkLight{
+    width: 50px;
+    height: 50px;
+    
+}
+.parametres{
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    position: absolute;
+    top: 3rem;
+    left: 5px;
+}
+.container
+{
+     position: relative;
+     background: #2f363e;
+     /*min-height: 500px;/*on augmente la hauteur du containeur*/
+     border-radius: 20px;
+     border-top-left-radius:225px;/*clock.height/2*/
+     border-top-right-radius:225px ;
+     box-shadow: 25px 25px 75px rgba(0,0,0,0.75),
+    10px 10px 70px rgba(0,0,0,0.25),
+    inset 5px 5px 10px rgba(0,0,0,0.5),
+    inset 5px 5px 20px rgba(255,255,255,0.2),
+    inset -5px -5px 15px rgba(0,0,0,0.75) ;
+    /* donnes une représentation en 3D de l'image
+    accentue la valeur du box-shadow*/
+    display: flex;
+    justify-content: center;
+    align-items: center;/*le clock se place au centre du conteneur*/
+    flex-direction: column;
+}
+.clock
+{
+    position: relative;
+    width: 450px ;
+    height: 450px;
+    background: #2f363e;
+    border-radius: 50%;
+    box-shadow: 10px 50px 70px rgba(0,0,0,0.25),
+    inset 5px 5px 10px rgba(0,0,0,0.5),
+    inset 5px 5px 20px rgba(255,255,255,0.2),
+    inset -5px -5px 15px rgba(0,0,0,0.75) ;
+    /* donnes une représentation en 3D de l'image
+    accentue la valeur du box-shadow*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px; /*on augmente la distance entre le clock et le containaire*/
+
+}
+.clock::before{
+    content: '';
+    /*position: absolute;*/
+    width: 8px;
+    height: 8px;
+    background: #2f363e;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    z-index: 100000;
+}
+.clock span
+{
+    position: absolute; /* les span se concentre tous au centre par rapport à la position de leurs ancetres celui-ci étant le clock*/
+    inset: 20px; /* plus sa valeur est grande plus les élements se rapproche du centre*/
+    color: #fff;
+    text-align: center;
+    transform: rotate(calc(30deg * var(--i)));
+    /*360 dégrés / 12 valeurs = 30 dégrés: chaque valeur va roter de 30dégrés dans le cercle de 360dégrés */
+
+}
+.clock span b
+{
+    font-size: 2em;
+    opacity: 0.25;
+    font-weight: 600;
+    display: inline-block; /*on range bien chaque élements dans un block sur une ligne*/
+    transform: rotate(calc(-30deg * var(--i)));
+    z-index: 10;
+}
+.circle i
+{
+    position: absolute;
+    width: 6px;
+    height: 50%;
+    background: var(--clr);
+    opacity: 0.75;
+    transform-origin:bottom;
+    transform: scaleY(0.5);
+    
+}
+.circle:nth-child(1) i{
+    width: 2px;
+}
+.circle:nth-child(2) i{
+    width: 6px;
+}
+.circle
+{
+    position: absolute;/*il va se placer en fonction de la position de son parent clock*/
+    width: 300px;
+    height: 300px;
+    border: 2px solid rgba(0,0,0,0.25);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+} 
+.circle2
+{
+     width: 240px;
+     height: 240px;
+     z-index: 9;
+}
+.circle3
+{
+     width: 180px;
+     height:180px;/*si la hauteur est plus grande que la largeur, la figure formé sera une ellipse*/
+     z-index: 8;
+}
+.circle::before
+{
+    content: '';
+    position: absolute;
+    top: -8.5px  ;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--clr) ;
+    box-shadow: 0 0 20px var(--clr),
+    0 0 60px var(--clr);
+}
+
+
+/* digital clock style */
+
+#time
+{
+    margin-bottom: 40px;
+    display: flex;
+    padding: 10px 20px;
+    font-size: 2em;
+    font-weight: 600;
+    border: 2px solid rgba(0,0,0,0.5);
+    border-radius: 40px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5),
+    inset 5px 5px 20px rgba(255,255,255,0.2),
+    inset -5px -5px 15px rgba(0,0,0,0.75);
+}
+#time div
+{
+    position: relative;
+    width: 60px;
+    text-align: center;
+    font-weight:500;
+    color: var(--clr);
+}
+#time div:nth-child(1)::after,
+#time div:nth-child(2)::after
+{
+    content: ':';
+    position: absolute;
+    right: -4px;
+}
+#time div:last-child
+{
+    font-size: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff ;
+}
+#time div:nth-child(2)::after
+{
+    animation: animate 1s steps(1) infinite;
+    /*animate = nom du keyFrame à lier au sélecteur qui est #time dans ce cas*/
+}
+@keyframes animate
+{
+    0%
+    {
+        opacity: 1;
+    }
+    50%
+    {
+        opacity: 0;
+    } 
+}
+

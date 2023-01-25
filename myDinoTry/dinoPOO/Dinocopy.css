@@ -1,0 +1,84 @@
+/*#dino{
+    background-image: url("./ASSETS/dino1.gif");
+    height: 30%;
+    
+}
+*/
+*{
+    margin: 0;
+    padding: 0;
+    /*position: absolute;*/
+    justify-content: center;
+    width: 100vh;
+}
+
+#world{
+   
+   /* background-color: gray;*/
+    width: 100%;
+    height: 370px;
+    position: relative;
+    left: 25rem;
+    top: 10rem;
+    background-repeat: repeat-x;
+    
+}
+#dino{
+
+    background-image: url("./ASSETS/dino-stationary.png");
+    height: 90px;
+    background-repeat: no-repeat;
+    position: absolute;
+    /* top: 17rem; */
+    width: 100px;
+    left: 5px;
+    bottom: 0px;
+
+}
+#ground{
+    background-image: url("./ASSETS/ground.png");
+    position: absolute;
+    top: 20rem;
+    height: 30%;
+    background-repeat: repeat-x;
+
+
+}
+#Clouds{
+    background-image: url("./ASSETS/Clouds.png");
+    width: 100%;
+    height: 370px;
+    position: absolute;
+    
+    background-repeat: repeat-x;
+}
+#cactus {
+    background-image: url("./ASSETS/cactus.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 43rem;
+    bottom: 0;
+    height: 70px;
+    width: 100px;
+}
+#temps {
+    position: absolute;
+    width: 350px;
+    height: 300px;
+   bottom: 33rem;
+    left: 73rem;
+   
+}
+#score{
+position: absolute;
+top: 8rem;
+left: 68rem;
+font-weight: bolder;
+font-size: larger;
+}
+#name{
+font-weight: bolder;
+font-size: larger;
+position: relative;
+top: 14rem;
+}

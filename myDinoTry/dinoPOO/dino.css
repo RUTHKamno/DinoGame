@@ -1,0 +1,30 @@
+/*#dino{
+    background-image: url("./ASSETS/dino1.gif");
+    height: 30%;
+    
+}
+*/
+*{
+    margin: 0;
+    padding: 0;
+    /*position: absolute;*/
+    justify-content: center;
+    width: 100vh;
+}
+
+#world{
+    background-image: url("./ASSETS/beauTemps.png");
+    width: 100%;
+    height: 370px;
+    position: relative;
+    left: 25rem;
+    top: 10rem;
+    background-repeat: no-repeat;
+    
+}
+#dino {
+
+    background-image: url("./ASSETS/dino1.gif");
+    background-repeat: no-repeat;
+    
+}

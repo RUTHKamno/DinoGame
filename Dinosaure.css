@@ -1,0 +1,48 @@
+body{
+    margin-left: 25px;
+    background-color: black;
+    
+    align-items: center;
+    justify-content: center;
+}
+#zone{
+    width: 500px;
+    height: 250px;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    
+    background-size: cover;
+    position: absolute;
+    left: 33rem;
+    top: 17rem;
+    
+}
+#dino{
+    
+    width: 60px;
+    height: 50px;
+    background-image:url("img/dino1.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 10px;
+    
+    position: absolute;
+    margin-left: 25px;
+    
+}
+
+#ground{
+    position: absolute;
+    width: 500px;
+    top: 14.65rem;
+}
+#cactus{
+    width: 30px;
+    height: 29px;
+    position: absolute;
+    left: 5rem;
+    bottom: 13px;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu_dinosaure</title>
+    <link rel="stylesheet" href="../DinosaureCorrection/Dino.css">
+    <link rel="stylesheet" href="../DinosaureCorrection/horlogeCorrection.css">
+</head>
+<body>
+  <div class="nom">
+    <span>Bienvenue: <b id="name"> </b></span>
+  </div>
+  
+    <!--Configuration des paramètres-->
+<div class="parametres">
+    
+    <label for="heures">Heures</label><br>
+    <input type="number" id="heures" required = required><br>
+    <label for="minutes">Minutes</label>
+    <input type="number" id="minutes" required = required><br>
+    <label for="Secondes">Secondes</label>
+    <input type="number" id="Secondes" required = required><br>
+    <input type="button" value="Obtenir" onclick="horaires()">
+</div>
+   
+   <div class="container">
+    
+    <div  class="clock">
+    
+      
+      <div class="circle" id="sc" style="--clr:#04fc43;"> <i> </i></div>
+        <div class="circle circle2" id="mn" style="--clr:#fee800;"> <i> </i> </div>
+            <div class="circle circle3" id="hr" style="--clr:#ff2972;"><i> </i> </div>
+
+      <span style = "--i:1"><b>1</b></span> <!--on déclare la variable i dans chaque span inline et on lui attribue une valeur par défaut -->
+      <span style = "--i:2"><b>2</b></span>
+      <span style = "--i:3"><b>3</b></span>
+      <span style = "--i:4"><b>4</b></span>
+      <span style = "--i:5"><b>5</b></span>
+      <span style = "--i:6"><b>6</b></span>
+      <span style = "--i:7"><b>7</b></span>
+      <span style = "--i:8"><b>8</b></span>
+      <span style = "--i:9"><b>9</b></span>
+      <span style = "--i:10"><b>10</b></span>
+      <span style = "--i:11"><b>11</b></span>
+      <span style = "--i:12"><b>12</b></span>
+    </div>
+
+
+    <!-------------------digital clock------------------------>
+    <div id="time">
+        <div id="hour" style="--clr: #ff2972; ">00</div>
+        <div id="minute" style="--clr: #fee800;">00</div>
+        <div id="seconds" style="--clr: #04fc43;">00</div>
+        <div id="ampm">AM</div>
+    </div>
+</div>
+
+
+   <!-----Jeu_de_dinosaure---->
+    <div class = "world" data-world>
+       
+        <!--data world: c'est un attribut de données C'est cette classe qui va nous aider à appliquer du style responsive pour le jeu-->
+        <div id="goodPlayers"></div>
+        <div id="score_max"> </div>
+        <div class = "score" data-score>0</div>
+        <div class = "nom" data-nom></div>
+        <div class = "start-screen" data-start-screen>Press Space Key To Start</div>
+        <img src = "../DinosaureCorrection/ASSETS/ground.png" alt = "" class = "ground" data-ground>
+        <img src = "../DinosaureCorrection/ASSETS/ground.png" alt = "" class = "ground" data-ground>
+         <!--On déclare le  sol deux fois parce que dans le jeu on remarque que 
+        le sol avance au fur et à mesure que le dinosaure n'a pas encore touché le sol
+        le sol se repéte donc plusieurs fois qu'un sol est termine 
+        le principe derriére est d'assembler les deux sols de tels sortes que
+        à chaque fois qu'un obstacles posé au sol sort du bord de l'écran,le second sol 
+        prends la place du premier et ainsi de suite -->
+        <!--Mettre le dinosaure à l'intérieur de l'écran-->
+        <img src = "../DinosaureCorrection/ASSETS/dino-stationary.png" alt = "" class = "dino" data-dino>
+
+    </div>
+    <script>
+        //nom = prompt("Entrez votre nom");
+        function horaires(){
+
+            // déclaration des variables
+            let world = document.querySelector(".world")
+        let heures = document.getElementById("hr");
+        let Minutes = document.getElementById("mn");
+        let Secondes= document.getElementById("sc");
+        let nbre_heures = document.getElementById("heures");
+        let nbre_Minutes = document.getElementById("minutes");
+        let nbre_Secondes= document.getElementById("Secondes");
+        // valeur des inputs
+
+        let hour = nbre_heures.value
+        let min = nbre_Minutes.value
+        let sec = nbre_Secondes.value
+
+         // Conditions 
+         if (hour > 24 || min > 59 || sec > 59 || hour < 0 || min < 0 || sec < 0)
+        {
+            alert("Entrez de bonne valeurs")
+            return;
+        }
+        else
+        {
+
+            // affectation des valeurs à chaque aiguilles
+           
+            //let day = new Date(); // fonction permettant de recupérer l'heure actuelle
+            
+        let aiguillesHeures = hour * 30; // 360 / 12
+        let aiguillesMinutes = min * 6 // 360 / 60
+        let aiguillesSecondes = sec * 6 // 360 / 120
+        
+        heures.style.transform = `rotateZ(${aiguillesHeures + (aiguillesMinutes / 12)}deg)`;
+        Minutes.style.transform = `rotateZ(${aiguillesMinutes}deg`;
+        Secondes.style.transform = `rotateZ(${aiguillesSecondes}deg`;
+       
+        
+        // digital  clock
+        
+        let hours = document.getElementById('hour');
+        let minutes = document.getElementById('minute');
+        let seconds = document.getElementById('seconds');
+        let ampm = document.getElementById('ampm')
+        
+        let h = hour;
+        let m = min;
+        let s = sec;
+        
+        let am = h >= 12 ? "PM" : "AM";
+        
+        // convert 24hr clock to 12hr clock
+        if (h > 12 )
+        {
+            h = h - 12;
+        }
+        
+        
+        // add zero before single digit number
+        h = (h < 10) ? "0" + h : h
+        m = (m < 10) ? "0" + m : m
+        s = (s < 10) ? "0" + s : s
+        hours.innerHTML = h;
+        minutes.innerHTML = m;
+        seconds.innerHTML = s;
+        ampm.innerHTML = am;
+        
+       
+        }
+
+        // gestion du background 
+        if (hour == 6)
+        {
+            /*world.style.background = "url(./ASSETS/soleillevant.jpg)";
+            world.style.background[repeat] = "no-repeat";*/
+            world.classList.add("sixhours");
+        }
+        else{
+
+            if (hour >= 7 && hour <= 17)
+        {
+            world.classList.add("moreThanSixHours");
+          /* world.style.background = "url(./ASSETS/beauTemps.png)";
+           world.style.background[repeat] = "no-repeat";
+           /*body.style.background = "white"
+           body.style.color = "black"*/
+        
+        }
+        else {
+        
+           world.classList.add("night");
+        }
+
+        }
+       
+
+        }
+        
+
+       
+        
+        
+        
+        
+        
+            </script>  
+    <script src = "../DinosaureCorrection/Dino.js" type = "module"></script>
+    <!--la valeur type module dérange mon navigateur il a fallu que je l'éxécute sur un serveur local: en me servant du Live - server -->
+</body>
+</html>

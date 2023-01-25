@@ -1,0 +1,66 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    /* permet de redimensionner le jeu*/
+    user-select: none;/* cette balise permet à l'utilisateur de ne pas mettre en surbrillance mon texte*/
+    
+}
+
+body {
+    margin: 0;/*on enlève les marges */
+    display: flex;
+    justify-content: center;
+    /* on centre tous les éléments horizontalement*/
+    align-items: center;
+    /*on centre tous les élements verticalements*/
+    min-height: 100vh;
+}
+.world{
+    overflow: hidden;
+    position: relative;
+    /* en retirant ces deux valeurs: height et width nous n'avons plus rien sur l'écran car tous est défini en position absolute
+    le javascript va nous permettre de l'améliorer en fonction de la taille de l'écran*/
+      /*width: 100%;
+    /*on occupe toute la largeur de l'écran*/
+      /*height: 200px;
+    /*en fonction de la taille de l'écran notre jeu sera toujours bien placé*/
+}
+.score {
+    position: absolute;
+    font-size: 3vmin;
+    right: 1vmin;
+    top: 1vmin;
+}
+.start-screen {
+    position: absolute;
+    font-size: 5vmin;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.hide{
+    display: none;/*cette classe va nous permettre d'enlever le texte 
+    "Press any key to continue" quand le jeu aura commencé*/
+
+}
+.ground{
+    --left: 0;
+    position: absolute;
+    width: 300%;
+    bottom: 0;
+    left: calc(var(--left) * 1%);
+}
+.dino{
+    --bottom:0;
+    position: absolute;
+    left: 1%;
+    height: 30%;
+    bottom: calc(var(--bottom) * 1%);
+}
+.cactus {
+    position: absolute;
+    left: calc(var(--left) * 1%);
+    height: 30%;
+    bottom: 0;
+}
+/* NB : toutes ces variables qu'on a crée seront manipulés plustard en js 
+pour nous permettre de modifier à chaque fois la position de chaque éléments du code*/
